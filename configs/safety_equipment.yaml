@@ -1,0 +1,78 @@
+# AURA Safety Equipment Detection Dataset Configuration
+# YOLOv8 format configuration file
+
+# Dataset paths
+path: data  # dataset root dir
+train: train/images  # train images (relative to 'path')
+val: val/images  # val images (relative to 'path')
+test: test/images  # test images (optional, relative to 'path')
+
+# Classes - 7 critical safety equipment types
+nc: 7  # number of classes
+names:
+  0: OxygenTank
+  1: NitrogenTank
+  2: FirstAidBox
+  3: FireAlarm
+  4: SafetySwitchPanel
+  5: EmergencyPhone
+  6: FireExtinguisher
+
+# Model configuration
+model:
+  architecture: yolov8n  # yolov8n, yolov8s, yolov8m, yolov8l, yolov8x
+  img_size: 640
+  batch_size: 16
+  epochs: 100
+  patience: 50
+  
+# Training hyperparameters
+hyperparameters:
+  lr0: 0.01  # initial learning rate
+  lrf: 0.01  # final OneCycleLR learning rate
+  momentum: 0.937  # SGD momentum/Adam beta1
+  weight_decay: 0.0005  # optimizer weight decay
+  warmup_epochs: 3.0  # warmup epochs
+  warmup_momentum: 0.8  # warmup initial momentum
+  warmup_bias_lr: 0.1  # warmup initial bias lr
+  box: 0.05  # box loss gain
+  cls: 0.5  # cls loss gain
+  cls_pw: 1.0  # cls BCELoss positive_weight
+  obj: 1.0  # obj loss gain
+  obj_pw: 1.0  # obj BCELoss positive_weight
+  iou_t: 0.20  # IoU training threshold
+  anchor_t: 4.0  # anchor-multiple threshold
+  fl_gamma: 0.0  # focal loss gamma
+  hsv_h: 0.015  # image HSV-Hue augmentation
+  hsv_s: 0.7  # image HSV-Saturation augmentation
+  hsv_v: 0.4  # image HSV-Value augmentation
+  degrees: 0.0  # image rotation (+/- deg)
+  translate: 0.1  # image translation (+/- fraction)
+  scale: 0.5  # image scale (+/- gain)
+  shear: 0.0  # image shear (+/- deg)
+  perspective: 0.0  # image perspective (+/- fraction)
+  flipud: 0.0  # image flip up-down (probability)
+  fliplr: 0.5  # image flip left-right (probability)
+  mosaic: 1.0  # image mosaic (probability)
+  mixup: 0.0  # image mixup (probability)
+
+# Inference settings
+inference:
+  conf_threshold: 0.25  # confidence threshold
+  iou_threshold: 0.45   # NMS IoU threshold
+  max_detections: 1000  # maximum number of detections
+  agnostic_nms: False   # class-agnostic NMS
+  multi_label: False    # multiple labels per box
+
+# Real-time processing
+realtime:
+  fps_target: 30        # target FPS for real-time processing
+  input_size: [640, 640] # input resolution
+  device: 'auto'        # 'auto', 'cpu', 'cuda:0', etc.
+  half_precision: True   # use FP16 inference
+  
+# Dashboard settings
+dashboard:
+  update_interval: 0.1   # dashboard update interval in seconds
+  history_length: 100    # number of frames to keep in history
+  alert_threshold: 0.8   # confidence threshold for alerts

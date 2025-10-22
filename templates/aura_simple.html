@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA - Real-Time Detection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .video-section {
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        #video-feed {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .detections-list {
+            margin-top: 30px;
+        }
+
+        .detections-list h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .detection-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #667eea;
+        }
+
+        .detection-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .detection-confidence {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .no-detections {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-style: italic;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .live-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #ff4444;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 AURA Detection System</h1>
+            <p class="subtitle">
+                <span class="live-indicator"></span>
+                Real-Time Safety Equipment Detection
+            </p>
+        </header>
+
+        <div class="main-content">
+            <div class="video-section">
+                <div class="video-container">
+                    <img id="video-feed" src="{{ url_for('video_feed') }}" alt="Live Video Feed">
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">FPS</div>
+                    <div class="stat-value" id="fps">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Current Detections</div>
+                    <div class="stat-value" id="detections">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Frames Processed</div>
+                    <div class="stat-value" id="frames">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Device</div>
+                    <div class="stat-value" id="device" style="font-size: 1.2em;">...</div>
+                </div>
+            </div>
+
+            <div class="detections-list">
+                <h3>📋 Current Detections</h3>
+                <div id="detection-items">
+                    <div class="no-detections">No objects detected yet...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update stats every second
+        setInterval(async () => {
+            try {
+                const response = await fetch('/stats');
+                const data = await response.json();
+                
+                // Update stat cards
+                document.getElementById('fps').textContent = data.fps;
+                document.getElementById('detections').textContent = data.total_detections;
+                document.getElementById('frames').textContent = data.frames;
+                document.getElementById('device').textContent = data.device;
+                
+                // Update detections list
+                const detectionsList = document.getElementById('detection-items');
+                if (data.detections && data.detections.length > 0) {
+                    detectionsList.innerHTML = data.detections.map(det => `
+                        <div class="detection-item">
+                            <span class="detection-name">${det.class}</span>
+                            <span class="detection-confidence">${(det.confidence * 100).toFixed(1)}%</span>
+                        </div>
+                    `).join('');
+                } else {
+                    detectionsList.innerHTML = '<div class="no-detections">No objects detected...</div>';
+                }
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

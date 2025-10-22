@@ -1,0 +1,36 @@
+# AURA Safety Equipment Dataset Configuration
+# YOLOv8 Training Configuration File
+
+# Dataset root directory (use absolute path)
+path: C:/Users/RADHA SOAMI JI/Desktop/AURA/data
+
+# Training and validation data paths (relative to 'path')
+train: train/images
+val: val/images
+
+# Optional: test data path
+# test: test/images
+
+# Number of classes
+nc: 7
+
+# Class names (ID: Name mapping)
+# IMPORTANT: Order matters! Must match label files
+names:
+  0: OxygenTank
+  1: NitrogenTank
+  2: FirstAidBox
+  3: FireAlarm
+  4: SafetySwitchPanel
+  5: EmergencyPhone
+  6: FireExtinguisher
+
+# Optional: Class colors for visualization (RGB)
+colors:
+  0: [0, 255, 0]      # OxygenTank - Green
+  1: [255, 0, 0]      # NitrogenTank - Blue
+  2: [0, 255, 255]    # FirstAidBox - Yellow
+  3: [0, 0, 255]      # FireAlarm - Red
+  4: [255, 255, 0]    # SafetySwitchPanel - Cyan
+  5: [255, 0, 255]    # EmergencyPhone - Magenta
+  6: [128, 0, 128]    # FireExtinguisher - Purple

@@ -1,0 +1,151 @@
+{
+  "model_path": "runs/safety_equipment/weights/best.pt",
+  "test_data_path": "C:\\Users\\RADHA SOAMI JI\\Downloads\\test-20251015T135512Z-1-001\\test",
+  "timestamp": "2025-10-15T20:10:38.144879",
+  "device": "cuda",
+  "optimization_results": [
+    {
+      "conf_threshold": 0.15,
+      "precision": 0.6076294277929155,
+      "recall": 0.39246744104188663,
+      "f1_score": 0.47690333618477326,
+      "accuracy": 0.3131142937377141,
+      "total_predictions": 1835,
+      "avg_confidence": 0.5233890725660064,
+      "avg_inference_time": 46.22105453277546,
+      "fps": 21.635161943155097
+    },
+    {
+      "conf_threshold": 0.2,
+      "precision": 0.674373795761079,
+      "recall": 0.36958817317845827,
+      "f1_score": 0.4774897680763983,
+      "accuracy": 0.31362007168458783,
+      "total_predictions": 1557,
+      "avg_confidence": 0.5861224670994335,
+      "avg_inference_time": 47.37992008368201,
+      "fps": 21.10598747810905
+    },
+    {
+      "conf_threshold": 0.25,
+      "precision": 0.7157287157287158,
+      "recall": 0.349172826469553,
+      "f1_score": 0.4693636148568725,
+      "accuracy": 0.3066460587326121,
+      "total_predictions": 1386,
+      "avg_confidence": 0.6306881496056506,
+      "avg_inference_time": 47.17753472803348,
+      "fps": 21.19652936010214
+    },
+    {
+      "conf_threshold": 0.3,
+      "precision": 0.7495961227786753,
+      "recall": 0.326645547342485,
+      "f1_score": 0.45501348369698447,
+      "accuracy": 0.2945096794668359,
+      "total_predictions": 1238,
+      "avg_confidence": 0.6731400548545147,
+      "avg_inference_time": 48.154665969316596,
+      "fps": 20.766419616266976
+    },
+    {
+      "conf_threshold": 0.35,
+      "precision": 0.7881278538812785,
+      "recall": 0.30376627947905666,
+      "f1_score": 0.4385162601626016,
+      "accuracy": 0.28083306215424664,
+      "total_predictions": 1095,
+      "avg_confidence": 0.7186587053891186,
+      "avg_inference_time": 46.900862482566254,
+      "fps": 21.321569520639727
+    },
+    {
+      "conf_threshold": 0.4,
+      "precision": 0.8184523809523809,
+      "recall": 0.29039070749736007,
+      "f1_score": 0.4286827747466874,
+      "accuracy": 0.2728174603174603,
+      "total_predictions": 1008,
+      "avg_confidence": 0.7485224228825361,
+      "avg_inference_time": 46.47529776847978,
+      "fps": 21.51680673422634
+    },
+    {
+      "conf_threshold": 0.45,
+      "precision": 0.8372844827586207,
+      "recall": 0.2734952481520591,
+      "f1_score": 0.4123109578137437,
+      "accuracy": 0.25969251336898397,
+      "total_predictions": 928,
+      "avg_confidence": 0.7765063270284184,
+      "avg_inference_time": 46.44373528591353,
+      "fps": 21.5314292410779
+    },
+    {
+      "conf_threshold": 0.5,
+      "precision": 0.8645833333333334,
+      "recall": 0.26293558606124606,
+      "f1_score": 0.40323886639676115,
+      "accuracy": 0.2525354969574036,
+      "total_predictions": 864,
+      "avg_confidence": 0.7989090195408574,
+      "avg_inference_time": 46.061749651324966,
+      "fps": 21.709987301171374
+    },
+    {
+      "conf_threshold": 0.55,
+      "precision": 0.8813982521847691,
+      "recall": 0.24850404787046815,
+      "f1_score": 0.38769906644700713,
+      "accuracy": 0.24046321525885558,
+      "total_predictions": 801,
+      "avg_confidence": 0.8204914203446159,
+      "avg_inference_time": 45.77968828451883,
+      "fps": 21.843748559078037
+    },
+    {
+      "conf_threshold": 0.6,
+      "precision": 0.9027027027027027,
+      "recall": 0.23512847588877156,
+      "f1_score": 0.37308014521083493,
+      "accuracy": 0.22931685547545486,
+      "total_predictions": 740,
+      "avg_confidence": 0.8405568358060476,
+      "avg_inference_time": 45.709138493723856,
+      "fps": 21.87746330282086
+    }
+  ],
+  "best_accuracy": {
+    "conf_threshold": 0.2,
+    "precision": 0.674373795761079,
+    "recall": 0.36958817317845827,
+    "f1_score": 0.4774897680763983,
+    "accuracy": 0.31362007168458783,
+    "total_predictions": 1557,
+    "avg_confidence": 0.5861224670994335,
+    "avg_inference_time": 47.37992008368201,
+    "fps": 21.10598747810905
+  },
+  "best_f1": {
+    "conf_threshold": 0.2,
+    "precision": 0.674373795761079,
+    "recall": 0.36958817317845827,
+    "f1_score": 0.4774897680763983,
+    "accuracy": 0.31362007168458783,
+    "total_predictions": 1557,
+    "avg_confidence": 0.5861224670994335,
+    "avg_inference_time": 47.37992008368201,
+    "fps": 21.10598747810905
+  },
+  "best_precision": {
+    "conf_threshold": 0.6,
+    "precision": 0.9027027027027027,
+    "recall": 0.23512847588877156,
+    "f1_score": 0.37308014521083493,
+    "accuracy": 0.22931685547545486,
+    "total_predictions": 740,
+    "avg_confidence": 0.8405568358060476,
+    "avg_inference_time": 45.709138493723856,
+    "fps": 21.87746330282086
+  }
+}

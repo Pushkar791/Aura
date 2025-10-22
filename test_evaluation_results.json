@@ -1,0 +1,93 @@
+{
+  "model_path": "runs/safety_equipment/weights/best.pt",
+  "test_data_path": "C:\\Users\\RADHA SOAMI JI\\Downloads\\test-20251015T135512Z-1-001\\test",
+  "timestamp": "2025-10-16T02:01:30.986692",
+  "device": "cuda",
+  "results": {
+    "total_images": 717,
+    "total_predictions": 1386,
+    "overall_metrics": {
+      "precision": 0.7157287157287158,
+      "recall": 0.349172826469553,
+      "f1_score": 0.4693636148568725,
+      "accuracy": 0.3066460587326121
+    },
+    "per_class_stats": {
+      "OxygenTank": {
+        "predictions": 412,
+        "ground_truth": 748,
+        "true_positives": 362,
+        "false_positives": 50,
+        "false_negatives": 386,
+        "precision": 0.8786407766990292,
+        "recall": 0.4839572192513369,
+        "f1_score": 0.6241379310344828
+      },
+      "NitrogenTank": {
+        "predictions": 443,
+        "ground_truth": 743,
+        "true_positives": 301,
+        "false_positives": 142,
+        "false_negatives": 442,
+        "precision": 0.6794582392776524,
+        "recall": 0.40511440107671604,
+        "f1_score": 0.5075885328836425
+      },
+      "FirstAidBox": {
+        "predictions": 205,
+        "ground_truth": 412,
+        "true_positives": 147,
+        "false_positives": 58,
+        "false_negatives": 265,
+        "precision": 0.7170731707317073,
+        "recall": 0.3567961165048544,
+        "f1_score": 0.47649918962722854
+      },
+      "FireExtinguisher": {
+        "predictions": 173,
+        "ground_truth": 346,
+        "true_positives": 91,
+        "false_positives": 82,
+        "false_negatives": 255,
+        "precision": 0.5260115606936416,
+        "recall": 0.2630057803468208,
+        "f1_score": 0.35067437379576116
+      },
+      "EmergencyPhone": {
+        "predictions": 44,
+        "ground_truth": 212,
+        "true_positives": 23,
+        "false_positives": 21,
+        "false_negatives": 189,
+        "precision": 0.5227272727272727,
+        "recall": 0.10849056603773585,
+        "f1_score": 0.1796875
+      },
+      "SafetySwitchPanel": {
+        "predictions": 68,
+        "ground_truth": 217,
+        "true_positives": 45,
+        "false_positives": 23,
+        "false_negatives": 172,
+        "precision": 0.6617647058823529,
+        "recall": 0.2073732718894009,
+        "f1_score": 0.3157894736842105
+      },
+      "FireAlarm": {
+        "predictions": 41,
+        "ground_truth": 163,
+        "true_positives": 23,
+        "false_positives": 18,
+        "false_negatives": 140,
+        "precision": 0.5609756097560976,
+        "recall": 0.1411042944785276,
+        "f1_score": 0.22549019607843138
+      }
+    },
+    "statistics": {
+      "avg_confidence": 0.6306881496056506,
+      "avg_inference_time_ms": 45.85536527196653,
+      "fps": 21.80769892615697
+    }
+  }
+}
