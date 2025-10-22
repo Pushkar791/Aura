@@ -1,0 +1,16 @@
+# Image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.svg
+*.webp
+*.ico
+
+# Training data
+data/train/images/
+data/val/images/
+
+# Model outputs
+runs/
