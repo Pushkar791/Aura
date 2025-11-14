@@ -169,7 +169,7 @@ AURA/
 ├── 📁 models/                    # Trained models
 ├── 📁 logs/                      # System logs
 ├── 📁 utils/                     # Utility functions
-├── aura_main.py                  # Main application launcher
+├── WEB_APP.py                  # Main application launcher
 ├── requirements.txt              # Python dependencies
 └── README.md                     # Documentation
 ```
